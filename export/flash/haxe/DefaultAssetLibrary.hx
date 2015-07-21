@@ -59,6 +59,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/bg.png", AssetType.IMAGE);
 		className.set ("assets/images/brush.png", __ASSET__assets_images_brush_png);
 		type.set ("assets/images/brush.png", AssetType.IMAGE);
+		className.set ("assets/images/custom.png", __ASSET__assets_images_custom_png);
+		type.set ("assets/images/custom.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		className.set ("assets/images/menu.png", __ASSET__assets_images_menu_png);
@@ -97,6 +99,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/brush.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/custom.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -165,6 +171,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -185,6 +192,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/brush.png", __ASSET__assets_images_brush_png);
 		type.set ("assets/images/brush.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/custom.png", __ASSET__assets_images_custom_png);
+		type.set ("assets/images/custom.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
@@ -914,6 +924,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_data_printchar21_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_bg_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_brush_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_custom_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_menu_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_menu_pxi extends flash.utils.ByteArray { }
@@ -940,6 +951,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -955,6 +967,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("assets/data/PrintChar21.ttf") #if display private #end class __ASSET__assets_data_printchar21_ttf extends lime.text.Font {}
 @:image("assets/images/bg.png") #if display private #end class __ASSET__assets_images_bg_png extends lime.graphics.Image {}
 @:image("assets/images/brush.png") #if display private #end class __ASSET__assets_images_brush_png extends lime.graphics.Image {}
+@:image("assets/images/custom.png") #if display private #end class __ASSET__assets_images_custom_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
 @:image("assets/images/menu.png") #if display private #end class __ASSET__assets_images_menu_png extends lime.graphics.Image {}
 @:file("assets/images/menu.pxi") #if display private #end class __ASSET__assets_images_menu_pxi extends lime.utils.ByteArray {}
