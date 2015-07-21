@@ -23,12 +23,14 @@ import flixel.text.pxText.PxTextAlign;
 import flixel.util.FlxRandom;
 import flixel.FlxCamera; 
 import flixel.util.FlxColor;
+import flixel.util.FlxColorUtil;
 import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
 
 //FLIXEL ADDONS
 import flixel.addons.effects.FlxWaveSprite;
 import flixel.addons.effects.FlxGlitchSprite;
+import flixel.addons.plugin.screengrab.FlxScreenGrab;
 
 //FLASH
 import flash.display.BitmapDataChannel;
@@ -75,6 +77,8 @@ class PlayState extends FlxState {
     //VARS
     public var brushSize:Int = 6;
 
+    public var bCol:UInt = 0x11e76498;
+
     override public function create():Void {
         FlxG.cameras.bgColor = 0x11e76498;
 
@@ -86,6 +90,7 @@ class PlayState extends FlxState {
 
         brush = new FlxSprite(0,0);
         brush.makeGraphic(6, 6, 0xff2C3872);
+        //brush.loadGraphic("assets/images/brush.png");
 
         //
 
@@ -99,8 +104,8 @@ class PlayState extends FlxState {
         add(bg2);
         add(bg);
         add(brush);
- 
 
+        //DEBUG
 
         //CAMERA EFFECTS
         FlxG.camera.useBgAlphaBlending = true;
@@ -128,6 +133,7 @@ class PlayState extends FlxState {
             //bg.framePixels.copyPixels(FlxG.camera.buffer, FlxG.camera.buffer.rect, new Point(0, 0), bg2.framePixels);
         }
         if (FlxG.keys.justPressed.S) {
+            FlxScreenGrab.grab(null, true, true);
             //bg.framePixels.copyPixels(FlxG.camera.buffer, FlxG.camera.buffer.rect, new Point(0, 0), FlxG.camera.buffer);
         }
         if (FlxG.keys.pressed.D) {
@@ -141,6 +147,7 @@ class PlayState extends FlxState {
             TweenHelper.distort(b,0,0);
         }
 
+        /*
         if (FlxG.keys.justPressed.G) {
             brushSize += 1;
             brush.makeGraphic(brushSize, brushSize, 0xff2C3872);
@@ -150,23 +157,39 @@ class PlayState extends FlxState {
             brushSize -= 1;
             brush.makeGraphic(brushSize, brushSize, 0xff2C3872);
         }
+        */
         
         //ROW 3
         if (FlxG.keys.justPressed.W) {
             //weirdMode = !weirdMode;
         }
         if (FlxG.keys.pressed.R) {
-            rColTwo(brush);
+            rColThree(brush);
         }
         if (FlxG.keys.pressed.T) {
             rColTwo(bg);
-            FlxG.camera.screen.color = bg.color;
+            //FlxG.camera.screen.color = bg.color;
         }
 
         if (FlxG.keys.pressed.N) {
             pNoise(brush);
         }
 
+        if (FlxG.keys.pressed.M) {
+            rNoise(brush);
+            FlxG.log.add(brushSize);
+        }
+
+        brushSize += FlxG.mouse.wheel;
+        if (brushSize < 1) {
+            brushSize = 1;
+        } 
+        if (brushSize > 64) {
+            brushSize = 64;
+        }
+        if (FlxG.mouse.wheel != 0) {
+            brush.makeGraphic(brushSize, brushSize, bCol);
+        }
 
         super.update();
     }
@@ -218,6 +241,23 @@ class PlayState extends FlxState {
             }
         }
     }
+
+    public function rColThree(Obj1:FlxSprite):Void {
+        var w:Int = Std.int(Obj1.width);
+        var h:Int = Std.int(Obj1.height);
+        var randCol = new BitmapData(w,h,false,0);
+        randCol = Obj1.framePixels; 
+
+        var newCol:UInt = FlxRandom.color(10, 255);
+        bCol = newCol;
+
+        for (i in 0...h) {
+            for (j in 0...w) {
+                randCol.setPixel(j,i, newCol);
+            }
+        }
+    }
+
 
     public function rNoise(Obj1:FlxSprite):Void {
         var w:Int = Std.int(Obj1.width);
