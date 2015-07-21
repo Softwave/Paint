@@ -59,9 +59,10 @@ class PlayState extends FlxState {
 
     //BRUSH
     public var brush:FlxSprite;
-
     //UI
     public var menuBG:FlxSprite;
+
+    //SPRITES
 
     //EFFECTS AND SHADER STUFF
     public var effectsOn:Bool = false; 
@@ -70,6 +71,9 @@ class PlayState extends FlxState {
     public var r:TweenHelper; 
     public var g:TweenHelper;
     public var b:TweenHelper;
+
+    //VARS
+    public var brushSize:Int = 6;
 
     override public function create():Void {
         FlxG.cameras.bgColor = 0x11e76498;
@@ -81,7 +85,9 @@ class PlayState extends FlxState {
         bg2.makeGraphic(128, 128, 0xffffffff);
 
         brush = new FlxSprite(0,0);
-        brush.loadGraphic("assets/images/brush.png");
+        brush.makeGraphic(6, 6, 0xff2C3872);
+
+        //
 
         //EFFECTS AND SHADER STUFF
         r = new TweenHelper();
@@ -93,6 +99,7 @@ class PlayState extends FlxState {
         add(bg2);
         add(bg);
         add(brush);
+ 
 
 
         //CAMERA EFFECTS
@@ -112,6 +119,9 @@ class PlayState extends FlxState {
         if (FlxG.keys.pressed.C) {
             bg.framePixels.copyPixels(brush.framePixels, brush.framePixels.rect, new Point(brush.x, brush.y), brush.framePixels);
         }
+        if (FlxG.mouse.pressed) {
+            bg.framePixels.copyPixels(brush.framePixels, brush.framePixels.rect, new Point(brush.x, brush.y), brush.framePixels);
+        }
 
         //ROW 2
         if(FlxG.keys.justPressed.A) {
@@ -129,6 +139,16 @@ class PlayState extends FlxState {
             TweenHelper.distort(r,0,0);
             TweenHelper.distort(g,0,0);
             TweenHelper.distort(b,0,0);
+        }
+
+        if (FlxG.keys.justPressed.G) {
+            brushSize += 1;
+            brush.makeGraphic(brushSize, brushSize, 0xff2C3872);
+        }
+
+        if (FlxG.keys.justPressed.H) {
+            brushSize -= 1;
+            brush.makeGraphic(brushSize, brushSize, 0xff2C3872);
         }
         
         //ROW 3
