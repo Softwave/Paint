@@ -53,6 +53,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		className.set ("assets/data/PrintChar21.ttf", __ASSET__assets_data_printchar21_ttf);
+		type.set ("assets/data/PrintChar21.ttf", AssetType.FONT);
 		className.set ("assets/images/bg.png", __ASSET__assets_images_bg_png);
 		type.set ("assets/images/bg.png", AssetType.IMAGE);
 		className.set ("assets/images/brush.png", __ASSET__assets_images_brush_png);
@@ -86,6 +88,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/data/PrintChar21.ttf";
+		className.set (id, __ASSET__assets_data_printchar21_ttf);
+		
+		type.set (id, AssetType.FONT);
 		id = "assets/images/bg.png";
 		path.set (id, id);
 		
@@ -148,6 +154,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if openfl
 		
 		
+		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_data_printchar21_ttf);
 		
 		
 		
@@ -169,6 +176,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/data/PrintChar21.ttf", __ASSET__assets_data_printchar21_ttf);
+		type.set ("assets/data/PrintChar21.ttf", AssetType.FONT);
 		
 		className.set ("assets/images/bg.png", __ASSET__assets_images_bg_png);
 		type.set ("assets/images/bg.png", AssetType.IMAGE);
@@ -901,6 +911,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_data_printchar21_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_bg_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_brush_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
@@ -918,6 +929,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #elseif html5
 
 
+@:keep #if display private #end class __ASSET__assets_data_printchar21_ttf extends lime.text.Font { public function new () { super (); name = "Print Char 21"; } } 
 
 
 
@@ -940,6 +952,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
+@:font("assets/data/PrintChar21.ttf") #if display private #end class __ASSET__assets_data_printchar21_ttf extends lime.text.Font {}
 @:image("assets/images/bg.png") #if display private #end class __ASSET__assets_images_bg_png extends lime.graphics.Image {}
 @:image("assets/images/brush.png") #if display private #end class __ASSET__assets_images_brush_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
@@ -958,6 +971,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 #end
 
 #if openfl
+@:keep #if display private #end class __ASSET__OPENFL__assets_data_printchar21_ttf extends openfl.text.Font { public function new () { var font = new __ASSET__assets_data_printchar21_ttf (); src = font.src; name = font.name; super (); }}
 @:keep #if display private #end class __ASSET__OPENFL__assets_fonts_nokiafc22_ttf extends openfl.text.Font { public function new () { var font = new __ASSET__assets_fonts_nokiafc22_ttf (); src = font.src; name = font.name; super (); }}
 @:keep #if display private #end class __ASSET__OPENFL__assets_fonts_arial_ttf extends openfl.text.Font { public function new () { var font = new __ASSET__assets_fonts_arial_ttf (); src = font.src; name = font.name; super (); }}
 

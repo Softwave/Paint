@@ -23,7 +23,7 @@ class ApplicationMain {
 		app.addModule (stage);
 		#end
 		
-		var display = new flixel.system.FlxPreloader ();
+		var display = new CustomPreloader ();
 		
 		preloader = new openfl.display.Preloader (display);
 		preloader.onComplete = init;
@@ -36,6 +36,10 @@ class ApplicationMain {
 		
 		urls.push ("assets/data/data-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("Print Char 21");
+		types.push (lime.Assets.AssetType.FONT);
 		
 		
 		urls.push ("assets/images/bg.png");
